@@ -6,22 +6,22 @@
 
 #include <stdio.h>
 //Motor pins
-const int pwm1 = 4 ;  //initializing pin 4 as pwm
+const int motor_1 = 4 ;  //initializing pin 4 as pwm
 const int in_1 = 30 ;
 const int in_2 = 31 ;
-const int pwm2 = 5 ;  
+const int motor_2 = 5 ;  
 const int in_3 = 28 ;
 const int in_4 = 29 ;
-const int pwm3 = 6 ;  
+const int motor_3 = 6 ;  
 const int in_5 = 32 ;
 const int in_6 = 33 ;
-const int pwm4 = 7 ;  
+const int motor_4 = 7 ;  
 const int in_7 = 34 ;
 const int in_8 = 35 ;
-const int pwm5 = 8 ;  
+const int motor_5 = 8 ;  
 const int in_9 = 36 ;
 const int in_10 = 37 ;
-const int pwm6 = 9 ;  
+const int motor_6 = 9 ;  
 const int in_11 = 38 ;
 const int in_12 = 39 ;
 
@@ -33,12 +33,28 @@ int randomArray4;
 int randomArray5;
 int randomArray6;
 
+int direction1;
+int direction2;
+int direction3;
+int direction4;
+int direction5;
+int direction6;
+
+
+
+//PWM_Values
+float pwmVal_1;
+float pwmVal_2;
+float pwmVal_3;
+float pwmVal_4;
+float pwmVal_5;
+float pwmVal_6;
 
 //For providing logic to L298 IC to choose the direction of the DC motor 
 
 void setup()
 {
-pinMode(pwm1,OUTPUT) ;   //set PWM pin as output
+pinMode(motor_1,OUTPUT) ;   //set PWM pin as output
 pinMode(in_1,OUTPUT) ;  //Logic pins set as output
 pinMode(in_2,OUTPUT) ;
 pinMode(pwm2,OUTPUT) ;   
@@ -58,19 +74,42 @@ pinMode(in_11,OUTPUT) ;
 pinMode(in_12,OUTPUT) ;
 
 randomSeed(analogRead(0));
+Serial.begin(9600);
 }
 
 void loop()
 {
-randomArray1=random(-2,2);
-randomArray2=random(-2,2);
-randomArray3=random(-2,2);
-randomArray4=random(-2,2);
-randomArray5=random(-2,2);
-randomArray6=random(-2,2);
+randomArray1=random(100);
+randomArray2=random(100);
+randomArray3=random(100);
+randomArray4=random(100);
+randomArray5=random(100);
+randomArray6=random(100);
+
+//Generating PWM values
+pwmVal_1=(randomArray1*255)/100;
+pwmVal_2=(randomArray2*255)/100;
+pwmVal_3=(randomArray3*255)/100;
+pwmVal_4=(randomArray4*255)/100;
+pwmVal_5=(randomArray5*255)/100;
+pwmVal_6=(randomArray6*255)/100;
 
 //For Clock wise motion , in_1 = High , in_2 = Low
-analogWrite(pwm1,100) ;                                   //1
+analogWrite(motor_1,pwmVal_1);
+if (round(pwmVal_1)%2==0){
+  digitalWrite(in_1,HIGH) ;
+  digitalWrite(in_2,LOW) ;
+  Serial.print("0");
+  delay(500) ; 
+}else{
+  digitalWrite(in_1,LOW) ;
+  digitalWrite(in_2,HIGH) ;
+  Serial.print("1");
+  delay(500) ; 
+  
+}
+/*
+analogWrite(motor_1,100) ;                                   //1
 if(randomArray1 > 0){
   digitalWrite(in_1,HIGH) ;
   digitalWrite(in_2,LOW) ;
@@ -175,6 +214,6 @@ if(randomArray6 > 0){
   digitalWrite(in_11,HIGH) ;
   digitalWrite(in_12,HIGH) ;
   delay(500) ;
-}
+}*/
 }
    
