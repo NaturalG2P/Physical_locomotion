@@ -1,10 +1,9 @@
-//to do list: 
-//1. solder a pig tail
-//2. fix a connecting port
-//3. fix broken tendon
-//4. fix broken motor (cap on the top plate)
 
 #include <stdio.h>
+#include <Encoder.h>
+import serial 
+
+
 //Motor pins
 const int motor_1 = 4 ;  //initializing pin 4 as pwm
 const int in_1 = 30 ;
@@ -52,6 +51,19 @@ float pwmVal_4;
 float pwmVal_5;
 float pwmVal_6;
 
+//Encoders 
+Encoder left_hip_encoder(42,43);
+Encoder right_hip_encoder(40,41);
+Encoder left_knee_encoder(44,45);
+Encoder right_knee_encoder(48,49);
+
+
+long lhe = -999;
+long rhe = -999;
+long lke = -999;
+long rke = -999;
+
+
 //For providing logic to L298 IC to choose the direction of the DC motor 
 
 void setup()
@@ -81,6 +93,10 @@ Serial.begin(9600);
 
 void loop()
 {
+
+long new_lhe, new_rhe, new_lke, new_rke;
+
+
 randomArray1=random(100);
 randomArray2=random(100);
 randomArray3=random(100);
@@ -101,12 +117,12 @@ if (round(pwmVal_1)%2==0){
   digitalWrite(in_1,HIGH) ;
   digitalWrite(in_2,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_1,LOW) ;
   digitalWrite(in_2,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
 
 analogWrite(motor_2,pwmVal_2); //Motor 2
@@ -114,12 +130,12 @@ if (round(pwmVal_2)%2==0){
   digitalWrite(in_3,HIGH) ;
   digitalWrite(in_4,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_3,LOW) ;
   digitalWrite(in_4,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
 
 analogWrite(motor_3,pwmVal_3); //Motor 3
@@ -127,12 +143,12 @@ if (round(pwmVal_3)%2==0){
   digitalWrite(in_5,HIGH) ;
   digitalWrite(in_6,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_5,LOW) ;
   digitalWrite(in_6,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
 
 analogWrite(motor_4,pwmVal_4); //Motor 4
@@ -140,12 +156,12 @@ if (round(pwmVal_4)%2==0){
   digitalWrite(in_7,HIGH) ;
   digitalWrite(in_8,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_7,LOW) ;
   digitalWrite(in_8,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
 
 analogWrite(motor_5,pwmVal_5); //Motor 5
@@ -153,12 +169,12 @@ if (round(pwmVal_5)%2==0){
   digitalWrite(in_9,HIGH) ;
   digitalWrite(in_10,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_9,LOW) ;
   digitalWrite(in_10,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
 
 analogWrite(motor_6,pwmVal_6); //Motor 6
@@ -166,14 +182,36 @@ if (round(pwmVal_6)%2==0){
   digitalWrite(in_11,HIGH) ;
   digitalWrite(in_12,LOW) ;
   //Serial.print("0");
-  delay(500) ; 
+  //delay(500) ; 
 }else{
   digitalWrite(in_11,LOW) ;
   digitalWrite(in_12,HIGH) ;
   //Serial.print("1");
-  delay(500) ; 
+  //delay(500) ; 
 }
+delay(500) ;
+new_lhe = left_hip_encoder.read();
+new_rhe = right_hip_encoder.read();
+new_lke = left_knee_encoder.read();
+new_rke = right_knee_encoder.read();
 
+
+if (new_lhe != lhe || new_rhe != rhe || new_lke !=lke || new_rke !=rke) {
+    lhe = new_lhe;
+    rhe = new_rhe;
+    lke = new_lke;
+    rke = new_rke;
+  }
+
+Serial.print("Left = ");
+Serial.print(new_lhe);
+Serial.print(", Right = ");
+Serial.print(new_rhe);
+Serial.print(", Left knee= ");
+Serial.print(new_lke);
+Serial.print(", Right knee= ");
+Serial.print(new_rke);
+Serial.println();
 
 }
    
