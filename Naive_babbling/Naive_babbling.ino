@@ -57,19 +57,19 @@ void setup()
 pinMode(motor_1,OUTPUT) ;   //set PWM pin as output
 pinMode(in_1,OUTPUT) ;  //Logic pins set as output
 pinMode(in_2,OUTPUT) ;
-pinMode(pwm2,OUTPUT) ;   
+pinMode(motor_2,OUTPUT) ;   
 pinMode(in_3,OUTPUT) ; 
 pinMode(in_4,OUTPUT) ;
-pinMode(pwm3,OUTPUT) ;   
+pinMode(motor_3,OUTPUT) ;   
 pinMode(in_5,OUTPUT) ;  
 pinMode(in_6,OUTPUT) ;
-pinMode(pwm4,OUTPUT) ;   
+pinMode(motor_4,OUTPUT) ;   
 pinMode(in_7,OUTPUT) ; 
 pinMode(in_8,OUTPUT) ;
-pinMode(pwm5,OUTPUT) ;   
+pinMode(motor_5,OUTPUT) ;   
 pinMode(in_9,OUTPUT) ;  
 pinMode(in_10,OUTPUT) ;
-pinMode(pwm6,OUTPUT) ;  
+pinMode(motor_6,OUTPUT) ;  
 pinMode(in_11,OUTPUT) ;  
 pinMode(in_12,OUTPUT) ;
 
@@ -94,126 +94,84 @@ pwmVal_4=(randomArray4*255)/100;
 pwmVal_5=(randomArray5*255)/100;
 pwmVal_6=(randomArray6*255)/100;
 
-//For Clock wise motion , in_1 = High , in_2 = Low
-analogWrite(motor_1,pwmVal_1);
+analogWrite(motor_1,pwmVal_1);  //Motor 1
 if (round(pwmVal_1)%2==0){
   digitalWrite(in_1,HIGH) ;
   digitalWrite(in_2,LOW) ;
-  Serial.print("0");
+  //Serial.print("0");
   delay(500) ; 
 }else{
   digitalWrite(in_1,LOW) ;
   digitalWrite(in_2,HIGH) ;
-  Serial.print("1");
+  //Serial.print("1");
   delay(500) ; 
-  
-}
-/*
-analogWrite(motor_1,100) ;                                   //1
-if(randomArray1 > 0){
-  digitalWrite(in_1,HIGH) ;
-  digitalWrite(in_2,LOW) ;
-  //Clockwise for 0.5 secs
-//  delay(500) ;    
-}else if(randomArray1 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
-  digitalWrite(in_1,LOW) ;
-  digitalWrite(in_2,HIGH) ;
-//  delay(500) ;
-}else{
-  digitalWrite(in_1,HIGH) ;
-  digitalWrite(in_2,HIGH) ;
-//  delay(500) ;
 }
 
-analogWrite(pwm2,100) ;                                   //2
-if(randomArray2 > 0){
+analogWrite(motor_2,pwmVal_2); //Motor 2
+if (round(pwmVal_2)%2==0){
   digitalWrite(in_3,HIGH) ;
   digitalWrite(in_4,LOW) ;
-
-  //Clockwise for 0.5 secs
-//  delay(500) ;    
-}else if(randomArray2 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+  //Serial.print("0");
+  delay(500) ; 
+}else{
   digitalWrite(in_3,LOW) ;
   digitalWrite(in_4,HIGH) ;
-//  delay(500) ;
-}else{
-  digitalWrite(in_3,HIGH) ;
-  digitalWrite(in_4,HIGH) ;
-//  delay(500) ;
+  //Serial.print("1");
+  delay(500) ; 
 }
 
-analogWrite(pwm3,100) ;                                     //3
-if(randomArray3 > 0){
+analogWrite(motor_3,pwmVal_3); //Motor 3
+if (round(pwmVal_3)%2==0){
   digitalWrite(in_5,HIGH) ;
   digitalWrite(in_6,LOW) ;
-
-  //Clockwise for 0.5 secs
-  delay(500) ;    
-}else if(randomArray3 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+  //Serial.print("0");
+  delay(500) ; 
+}else{
   digitalWrite(in_5,LOW) ;
   digitalWrite(in_6,HIGH) ;
-  delay(500) ;
-}else{
-  digitalWrite(in_5,HIGH) ;
-  digitalWrite(in_6,HIGH) ;
-  delay(500) ;
+  //Serial.print("1");
+  delay(500) ; 
 }
 
-analogWrite(pwm4,100) ;                                     //4
-if(randomArray4 > 0){
+analogWrite(motor_4,pwmVal_4); //Motor 4
+if (round(pwmVal_4)%2==0){
   digitalWrite(in_7,HIGH) ;
   digitalWrite(in_8,LOW) ;
-
-  //Clockwise for 0.5 secs
-  delay(500) ;    
-}else if(randomArray4 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+  //Serial.print("0");
+  delay(500) ; 
+}else{
   digitalWrite(in_7,LOW) ;
   digitalWrite(in_8,HIGH) ;
-  delay(500) ;
-}else{
-  digitalWrite(in_7,HIGH) ;
-  digitalWrite(in_8,HIGH) ;
-  delay(500) ;
+  //Serial.print("1");
+  delay(500) ; 
 }
 
-analogWrite(pwm5,100) ;                                     //3
-if(randomArray5 > 0){
+analogWrite(motor_5,pwmVal_5); //Motor 5
+if (round(pwmVal_5)%2==0){
   digitalWrite(in_9,HIGH) ;
   digitalWrite(in_10,LOW) ;
-
-  //Clockwise for 0.5 secs
-  delay(500) ;    
-}else if(randomArray5 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+  //Serial.print("0");
+  delay(500) ; 
+}else{
   digitalWrite(in_9,LOW) ;
   digitalWrite(in_10,HIGH) ;
-  delay(500) ;
-}else{
-  digitalWrite(in_9,HIGH) ;
-  digitalWrite(in_10,HIGH) ;
-  delay(500) ;
+  //Serial.print("1");
+  delay(500) ; 
 }
 
-analogWrite(pwm6,100) ;                                     //3
-if(randomArray6 > 0){
+analogWrite(motor_6,pwmVal_6); //Motor 6
+if (round(pwmVal_6)%2==0){
   digitalWrite(in_11,HIGH) ;
   digitalWrite(in_12,LOW) ;
-
-  //Clockwise for 0.5 secs
-  delay(500) ;    
-}else if(randomArray6 < 0){
-  //For Anti Clock-wise motion - IN_1 = LOW , IN_2 = HIGH
+  //Serial.print("0");
+  delay(500) ; 
+}else{
   digitalWrite(in_11,LOW) ;
   digitalWrite(in_12,HIGH) ;
-  delay(500) ;
-}else{
-  digitalWrite(in_11,HIGH) ;
-  digitalWrite(in_12,HIGH) ;
-  delay(500) ;
-}*/
+  //Serial.print("1");
+  delay(500) ; 
+}
+
+
 }
    
