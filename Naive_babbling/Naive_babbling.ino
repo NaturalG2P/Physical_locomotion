@@ -5,29 +5,27 @@
 //4. fix broken motor (cap on the top plate)
 
 #include <stdio.h>
+//Motor pins
 const int pwm1 = 4 ;  //initializing pin 4 as pwm
 const int in_1 = 30 ;
 const int in_2 = 31 ;
-const int pwm2 = 5 ;  //initializing pin 5 as pwm
+const int pwm2 = 5 ;  
 const int in_3 = 28 ;
 const int in_4 = 29 ;
-const int pwm3 = 6 ;  //initializing pin 6 as pwm
+const int pwm3 = 6 ;  
 const int in_5 = 32 ;
 const int in_6 = 33 ;
-
-const int pwm4 = 7 ;  //initializing pin 6 as pwm
+const int pwm4 = 7 ;  
 const int in_7 = 34 ;
 const int in_8 = 35 ;
-
-const int pwm5 = 8 ;  //initializing pin 6 as pwm
+const int pwm5 = 8 ;  
 const int in_9 = 36 ;
 const int in_10 = 37 ;
-
-const int pwm6 = 9 ;  //initializing pin 6 as pwm
+const int pwm6 = 9 ;  
 const int in_11 = 38 ;
 const int in_12 = 39 ;
 
-
+//Random arrays
 int randomArray1;
 int randomArray2;
 int randomArray3;
@@ -40,29 +38,26 @@ int randomArray6;
 
 void setup()
 {
-pinMode(pwm1,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_1,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm1,OUTPUT) ;   //set PWM pin as output
+pinMode(in_1,OUTPUT) ;  //Logic pins set as output
 pinMode(in_2,OUTPUT) ;
-
-pinMode(pwm2,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_3,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm2,OUTPUT) ;   
+pinMode(in_3,OUTPUT) ; 
 pinMode(in_4,OUTPUT) ;
-
-pinMode(pwm3,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_5,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm3,OUTPUT) ;   
+pinMode(in_5,OUTPUT) ;  
 pinMode(in_6,OUTPUT) ;
-
-pinMode(pwm4,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_7,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm4,OUTPUT) ;   
+pinMode(in_7,OUTPUT) ; 
 pinMode(in_8,OUTPUT) ;
-
-pinMode(pwm5,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_9,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm5,OUTPUT) ;   
+pinMode(in_9,OUTPUT) ;  
 pinMode(in_10,OUTPUT) ;
-
-pinMode(pwm6,OUTPUT) ;   //we have to set PWM pin as output
-pinMode(in_11,OUTPUT) ;  //Logic pins are also set as output
+pinMode(pwm6,OUTPUT) ;  
+pinMode(in_11,OUTPUT) ;  
 pinMode(in_12,OUTPUT) ;
+
+randomSeed(analogRead(0));
 }
 
 void loop()
