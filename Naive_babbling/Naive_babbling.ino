@@ -9,21 +9,23 @@
 const int motor_1 = 4 ;  //initializing pin 4 as pwm
 const int in_1 = 30 ;
 const int in_2 = 31 ;
-const int motor_2 = 5 ;  
-const int in_3 = 28 ;
-const int in_4 = 29 ;
-const int motor_3 = 6 ;  
-const int in_5 = 32 ;
-const int in_6 = 33 ;
-const int motor_4 = 7 ;  
-const int in_7 = 34 ;
-const int in_8 = 35 ;
-const int motor_5 = 8 ;  
+const int motor_2 = 6 ;  
+const int in_3 = 32;
+const int in_4 = 33 ;
+const int motor_3 = 5 ;  
+const int in_5 = 28;
+const int in_6 = 29;
+
+
+const int motor_4 = 8 ;  //9
+const int in_7 = 38;
+const int in_8 = 39;
+const int motor_5 = 9 ;  
 const int in_9 = 36 ;
 const int in_10 = 37 ;
-const int motor_6 = 9 ;  
-const int in_11 = 38 ;
-const int in_12 = 39 ;
+const int motor_6 = 7 ;  
+const int in_11 = 34 ;
+const int in_12 = 35 ;
 
 //Random arrays
 int randomArray1;
@@ -171,7 +173,6 @@ if (round(pwmVal_6)%2==0){
   //Serial.print("1");
   delay(500) ; 
 }
-
 
 }
    
