@@ -1,7 +1,6 @@
 
 #include <stdio.h>
 #include <Encoder.h>
-import serial 
 
 
 //Motor pins
@@ -112,15 +111,19 @@ pwmVal_4=(randomArray4*255)/100;
 pwmVal_5=(randomArray5*255)/100;
 pwmVal_6=(randomArray6*255)/100;
 
-analogWrite(motor_1,pwmVal_1);  //Motor 1
+/*analogWrite(motor_1,pwmVal_1);  //Motor 1
 if (round(pwmVal_1)%2==0){
   digitalWrite(in_1,HIGH) ;
   digitalWrite(in_2,LOW) ;
+  Serial.print(randomArray1);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_1,LOW) ;
   digitalWrite(in_2,HIGH) ;
+  Serial.print(-randomArray1);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
 }
@@ -129,11 +132,15 @@ analogWrite(motor_2,pwmVal_2); //Motor 2
 if (round(pwmVal_2)%2==0){
   digitalWrite(in_3,HIGH) ;
   digitalWrite(in_4,LOW) ;
+  Serial.print(randomArray2);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_3,LOW) ;
   digitalWrite(in_4,HIGH) ;
+  Serial.print(-randomArray2);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
 }
@@ -142,24 +149,32 @@ analogWrite(motor_3,pwmVal_3); //Motor 3
 if (round(pwmVal_3)%2==0){
   digitalWrite(in_5,HIGH) ;
   digitalWrite(in_6,LOW) ;
+  Serial.print(randomArray3);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_5,LOW) ;
   digitalWrite(in_6,HIGH) ;
+  Serial.print(-randomArray3);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
-}
+}*/
 
 analogWrite(motor_4,pwmVal_4); //Motor 4
 if (round(pwmVal_4)%2==0){
   digitalWrite(in_7,HIGH) ;
   digitalWrite(in_8,LOW) ;
+  Serial.print(randomArray4);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_7,LOW) ;
   digitalWrite(in_8,HIGH) ;
+    Serial.print(-randomArray4);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
 }
@@ -168,11 +183,15 @@ analogWrite(motor_5,pwmVal_5); //Motor 5
 if (round(pwmVal_5)%2==0){
   digitalWrite(in_9,HIGH) ;
   digitalWrite(in_10,LOW) ;
+  Serial.print(randomArray5);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_9,LOW) ;
   digitalWrite(in_10,HIGH) ;
+  Serial.print(-randomArray5);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
 }
@@ -181,11 +200,15 @@ analogWrite(motor_6,pwmVal_6); //Motor 6
 if (round(pwmVal_6)%2==0){
   digitalWrite(in_11,HIGH) ;
   digitalWrite(in_12,LOW) ;
+  Serial.print(randomArray6);
+  Serial.print(",");
   //Serial.print("0");
   //delay(500) ; 
 }else{
   digitalWrite(in_11,LOW) ;
   digitalWrite(in_12,HIGH) ;
+  Serial.print(-randomArray6);
+  Serial.print(",");
   //Serial.print("1");
   //delay(500) ; 
 }
@@ -203,14 +226,19 @@ if (new_lhe != lhe || new_rhe != rhe || new_lke !=lke || new_rke !=rke) {
     rke = new_rke;
   }
 
-Serial.print("Left = ");
+//Serial.print("Left = ");
 Serial.print(new_lhe);
-Serial.print(", Right = ");
+Serial.print(",");
+
+//Serial.print(", Right = ");
 Serial.print(new_rhe);
-Serial.print(", Left knee= ");
+Serial.print(",");
+//Serial.print(", Left knee= ");
 Serial.print(new_lke);
-Serial.print(", Right knee= ");
+Serial.print(",");
+//Serial.print(", Right knee= ");
 Serial.print(new_rke);
+
 Serial.println();
 
 }
